@@ -1,6 +1,6 @@
 /.bundle
-/db/*.postgresql
 /db/*.postgresql-*
+/db/*.postgresql
 /log/*
 /tmp/*
 !/log/.keep
