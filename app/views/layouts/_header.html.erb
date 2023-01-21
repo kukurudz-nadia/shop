@@ -6,7 +6,6 @@
 
   <%- if user_signed_in? %>
   <%= link_to t('nav.logout'), destroy_user_session_path, class: "nav-link", data: { turbo_method: :delete }, class: "text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5  mr-2 mb-2 top-0 right-0 " %>
-
   <% else%>
   <%= link_to new_user_registration_path do %>
      <button type="button" class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5  mr-2 mb-2 ">Sign up</button>
