@@ -15,6 +15,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem 'simplecov', '~> 0.22.0'
 gem 'faker', '~> 3.1'
+gem "devise"
 
 group :development, :test do
   gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
