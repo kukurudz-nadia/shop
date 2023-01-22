@@ -1,0 +1,7 @@
+<div>
+  <h1 class="font-bold text-4xl">Carts#show</h1>
+  <p>Find me in app/views/carts/show.html.erb</p>
+  <%= link_to "Add (+1)", carts_product_add_path(:id => carts_product), method: :post%>
+  <%=link_to "Reduce (-1)", carts_product_reduce_path(:id => carts_product), method: :post%>
+  <%=link_to "Remove item", carts_product_path(carts_product), method: :delete %>
+</div>
