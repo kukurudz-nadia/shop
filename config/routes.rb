@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'order_details/new'
+  get 'order_details/show'
   get 'carts/:id' => "carts#show", as: "cart"
   delete 'carts/:id' => "carts#destroy"
   post 'carts_products:id/add' => "carts_products#add_quantity", as: "carts_product_add"
