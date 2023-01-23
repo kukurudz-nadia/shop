@@ -1,11 +1,11 @@
 <div>
-  <h1 class="font-bold text-4xl">Shopping cart</h1>
+<h1 class="text-3xl font-normal leading-normal mt-0 mb-2 text-sky-500">Shopping cart</h1>
   <h2>Items: <%= @cart.size %></h2>
   <br>
   <% @cart.each do |cart_item| %>
     <br>
-    <%= cart_item.name %>
-    <%= cart_item.price %>
-    <%= button_to "Remove from cart", remove_from_cart_path(cart_item), method: :delete %>
+<div class="font-bold text-xl">Name: <%= cart_item.name %></div>
+    <div class="font-bold text-xl"> Price: <%= cart_item.price %></div>
+    <%= button_to "Remove from cart", remove_from_cart_path(cart_item), method: :delete , class:"text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5  mr-2 mb-2 "%>
   <% end %>
 </div>
