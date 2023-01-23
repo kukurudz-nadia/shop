@@ -1,0 +1,19 @@
+<main class="container">
+  <div class="header">
+    <table>
+    <thead class="text-3xl font-normal text-gray-900 dark:text-white text-amber-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" >
+                   <div class="top-0 right-0"> Category name</div>
+                </th>
+            </tr>
+        </thead>
+  </table>
+<%= link_to "",
+                new_category_path,
+                class: "btn btn--primary" %>
+  </div>
+
+  <%= render @categories %>
+  </main>
+           

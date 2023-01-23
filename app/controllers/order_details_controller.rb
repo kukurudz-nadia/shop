@@ -4,7 +4,7 @@ class OrderDetailsController < ApplicationController
   end
 
   def create
-    @order = Order.new(quote_params)
+    @order = Order.new(order_details_params)
 
     if @order.save
       redirect_to orders_path, notice: "Order was successfully created."
