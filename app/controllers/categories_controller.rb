@@ -28,5 +28,6 @@ class CategoriesController < ApplicationController
     def show_9_category
     end
     def show_10_category
+
     end
 end
