@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
   def new
@@ -13,7 +14,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(quote_params)
+    @order = Order.new(order_params)
 
     if @order.save
       redirect_to orders_path, notice: "Order was successfully created."
@@ -44,7 +45,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-  def quote_params
+  def order_params
     params.require(:order).permit(:status, :ordered_at)
   end
 end
