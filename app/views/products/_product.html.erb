@@ -17,8 +17,7 @@
                     <%= link_to product.position, product_path(product) %>
                 </td>
                 <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                    <%= button_to "Add to cart", carts_products_path(:product_id => product.id)%></a>
+                    <%= button_to "Add to cart", add_to_cart_path(product) %>
                 </td>
             </tr>
           
