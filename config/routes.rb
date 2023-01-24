@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   delete 'carts_products/:id' => "carts_products#destroy"
   post "products/add_to_cart/:id", to: "products#add_to_cart", as: "add_to_cart"
   delete "products/remove_from_cart/:id", to: "products#remove_from_cart", as: "remove_from_cart"
+
   get 'categories/show_1_category' => "categories#show_1_category"
   get 'categories/show_2_category' => "categories#show_2_category"
   get 'categories/show_3_category' => "categories#show_3_category"
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
   get 'categories/show_8_category' => "categories#show_8_category"
   get 'categories/show_9_category' => "categories#show_9_category"
   get 'categories/show_10_category' => "categories#show_10_category"
+
   resources :categories
   resources :products
   resources :orders
