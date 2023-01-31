@@ -1,4 +1,3 @@
-ActiveRecord::Schema[7.0].define(version: 2023_01_21_104441) do
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
@@ -12,6 +11,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_21_104441) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
+  create_table "cart_products", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "cart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "carts", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -19,18 +25,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_21_104441) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
-  create_table "carts_products", id: false, force: :cascade do |t|
-    t.bigint "cart_id", null: false
-    t.bigint "product_id", null: false
-    t.index ["cart_id", "product_id"], name: "index_carts_products_on_cart_id_and_product_id"
-    t.index ["product_id", "cart_id"], name: "index_carts_products_on_product_id_and_cart_id"
-  end
-
   create_table "categories", force: :cascade do |t|
     t.text "name"
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
   end
 
   create_table "order_details", force: :cascade do |t|
@@ -54,12 +54,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_21_104441) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "orders_products", id: false, force: :cascade do |t|
-    t.bigint "product_id", null: false
-    t.bigint "order_id", null: false
+  create_table "product_orders", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "order_id"
     t.integer "amount"
-    t.index ["order_id", "product_id"], name: "index_orders_products_on_order_id_and_product_id"
-    t.index ["product_id", "order_id"], name: "index_orders_products_on_product_id_and_order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -74,8 +74,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_21_104441) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.string "email", null: false
+    t.string "encrypted_password", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
