@@ -3,7 +3,10 @@ class Product < ApplicationRecord
   validates :price, numericality: { greater_than: 0 }
 
   belongs_to :category
-  has_and_belongs_to_many :orders
+  has_many :cart_products
+  has_many :carts, through: :cart_products
+  has_many :product_orders
+  has_many :orders, through: :product_orders
 
   scope :ordered, -> { order(position: :desc) }
 end
