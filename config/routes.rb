@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :products
   resources :orders
+  resources :carts
   devise_for :users
   root "home#index"
 end

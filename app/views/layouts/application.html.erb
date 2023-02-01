@@ -11,9 +11,9 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-   <%= render "layouts/header"%>
-   <p class="notice"><%= notice %></p>
+  <body class="min-h-screen">
+    <%= render "layouts/header"%>
+    <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <main>
       <%= yield %>
