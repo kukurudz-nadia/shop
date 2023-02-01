@@ -1,9 +1,5 @@
 class OrdersController < ApplicationController
-    before_action :set_quote, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @orders = Order.all
-  end
+  before_action :set_quote, only: [:show, :edit, :update, :destroy]
 
   def show
     @order = Order.find(params[:id])

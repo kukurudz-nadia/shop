@@ -1,8 +1,13 @@
-<main class="container">
-  <%= link_to sanitize("&larr; Back to products"), products_path %>
-  <div class="header">
-    <h1>
-      <%= @product.name %>
-    </h1>
-  </div>
-</main>
+<div class="max-w-5xl mx-auto">
+  <% @products.each do |product| %>
+    <div class="w-full max-w-sm bg-amber-100 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div class="px-5 pb-5">
+        <img class="p-8 rounded-t-lg" src="<%= image_path('2_e822dae0-14df-4cb8-b145-ea4dc0966b34.webp') %>"/>
+        <p class="py-2.5 text-2xl font-bold w-4/5 mx-auto"><%= product.name %></p>
+        <p class="py-2.5 font-normal text-xl text-gray-700"><%= product.description %></p>
+        <p class="flex items-center justify-between text-3xl font-bold text-gray-900 dark:text-white"><%= product.price %>$<p>
+        <%= button_to "Add to cart", add_to_cart_path(product), class: "text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,15 +1,9 @@
-<main class="container">
 <div class="max-w-5xl mx-auto">
-<% @categories.each do |category| %>
-      <div class="my-7 text-center mx-5 bg-amber-100 py-3 inline-flex flex-col rounded-lg shadow flex-wrap w-80 h-44">
-        <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-        <p class="py-3 text-xl font-bold w-2/5 m-auto"><%= category.name %></p>
-        <br>
-        <p class="py-3 text-sm  w-2/5 m-auto"><%= category.description %></p>
-        <%= link_to "Show", category, class: "text-white h-14 bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-xl px-3 py-4 text-center mr-3 mb-2"  %>
+  <% @categories.each do |category| %>
+    <div class="my-7 text-center mx-5 bg-amber-100 py-3 inline-flex flex-col rounded-lg shadow flex-wrap w-80 h-44">
+      <p class="py-3 text-xl font-bold w-2/5 m-auto"><%= category.name %></p>
+      <p class="py-3 text-sm  w-2/5 m-auto"><%= category.description %></p>
+      <%= link_to "Show", category, class: "text-white h-14 bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-xl px-3 py-4 text-center mr-3 mb-2"  %>
     </div>
-    <% end %>
+  <% end %>
 </div>
-</main>
-
-           

@@ -1,62 +1,31 @@
 class ProductsController < ApplicationController
-    before_action :set_product, only: [:show, :edit, :update, :destroy]
-
   def index
-    @products = Product.all
+    @products = collection
   end
 
   def show
-  end
-
-  def new
-    @product = Product.new
-  end
-
-  def create
-    @product = Product.new(quote_params)
-
-    if @product.save
-      redirect_to products_path, notice: "Product was successfully created."
-    else
-      render :new
-    end
-  end
-
-  def edit
-  end
-
-  def update
-    if @product.update(product_params)
-      redirect_to products_path, notice: "Product was successfully updated."
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @product.destroy
-    redirect_to products_path, notice: "Product was successfully destroyed."
+    @product = resource
   end
 
   def add_to_cart
-    id = params[:id].to_i
+    id = params[:id]
     session[:cart] << id unless session[:cart].include?(id)
     redirect_to products_path
   end
 
   def remove_from_cart
-    id = params[:id].to_i
+    id = params[:id]
     session[:cart].delete(id)
     redirect_to products_path
   end
 
   private
 
-  def set_product
-    @product = Product.find(params[:id])
+  def collection
+    Product.ordered
   end
 
-  def product_params
-    params.require(:product).permit(:name, :price, :description, :position, :category_id)
+  def resource
+    collection.find(params[:id])
   end
 end
