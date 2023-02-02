@@ -2,7 +2,7 @@
   <% @category.products.each do |product| %>
     <div class="w-full max-w-sm bg-amber-100 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <div class="px-5 pb-5">
-        <img class="p-8 rounded-t-lg" src="<%= image_path('2_e822dae0-14df-4cb8-b145-ea4dc0966b34.webp') %>"/>
+        <%= image_tag("product.webp", class: "p-8 rounded-t-lg")%>
         <p class="py-2.5 text-2xl font-bold w-4/5 mx-auto"><%= product.name %></p>
         <p class="py-2.5 font-normal text-xl text-gray-700"><%= product.description %></p>
         <p class="flex items-center justify-between text-3xl font-bold text-gray-900 dark:text-white"><%= product.price %>$<p>
