@@ -8,7 +8,6 @@ class ProductsController < ApplicationController
   end
 
   def add_to_cart
-    id = params[:id]
     session[:cart] << id unless session[:cart].include?(id)
     redirect_to products_path
   end

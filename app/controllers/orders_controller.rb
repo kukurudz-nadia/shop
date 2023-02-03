@@ -1,6 +1,4 @@
 class OrdersController < ApplicationController
-  before_action :set_quote, only: [:show, :edit, :update, :destroy]
-
   def show
     @order = Order.find(params[:id])
   end
@@ -19,27 +17,12 @@ class OrdersController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-    if @order.update(order_params)
-      redirect_to orders_path, notice: "Order was successfully updated."
-    else
-      render :edit
-    end
-  end
-
   def destroy
     @order.destroy
     redirect_to orders_path, notice: "Order was successfully destroyed."
   end
 
   private
-
-  def set_quote
-    @order = Order.find(params[:id])
-  end
 
   def order_params
     params.require(:order).permit(:status, :ordered_at)
