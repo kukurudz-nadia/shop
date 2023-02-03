@@ -1,0 +1,5 @@
+@layeer base{
+  .button{
+    @aply bg-red
+  }
+}
