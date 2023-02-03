@@ -1,6 +1,4 @@
 class CartsController < ApplicationController
-  def create; end
-
   def show
     @cart = resource
   end
