@@ -3,13 +3,20 @@ class CartsController < ApplicationController
     @cart = resource
   end
 
+  def create
+  end
+
+  def destroy
+  end
+
+
   private
 
   def resource
     if user_signed_in?
-      current_user.cart
-    else
-      session[:cart]
+      Product.where(id: current_user.cart.cart_products.pluck(:product_id))
+    elsif session[:product_id]
+      Product.where(id: session[:product_id])
     end
   end
 end

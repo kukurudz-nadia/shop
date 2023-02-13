@@ -1,6 +1,10 @@
 class ProductsController < ApplicationController
   def index
-    @products = collection
+    if params[:id]
+      @products = collection.where(category_id: params[:id])
+    else
+      @products = collection
+    end
   end
 
   def show
@@ -8,7 +12,11 @@ class ProductsController < ApplicationController
   end
 
   def add_to_cart
-    session[:cart] << id unless session[:cart].include?(id)
+    if session[:product_ids].nil?
+      session[:product_ids] = [] 
+    end
+    
+    session[:product_ids] << params[:id]
     redirect_to products_path
   end
 
