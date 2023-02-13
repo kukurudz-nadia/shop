@@ -4,6 +4,7 @@ class CreateCategories < ActiveRecord::Migration[7.0]
       t.text :name
       t.integer :position
 
+
       t.timestamps
     end
   end
