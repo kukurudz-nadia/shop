@@ -1,18 +1,18 @@
 Rails.application.routes.draw do
-  get 'order_details/new'
-  get 'order_details/show'
-  get 'carts/:id' => "carts#show", as: "cart"
-  delete 'carts/:id' => "carts#destroy"
-  post 'carts_products:id/add' => "carts_products#add_quantity", as: "carts_product_add"
-  post 'carts_products/:id/reduce' => "carts_products#reduce_quantity", as: "carts_product_reduce"
-  post 'carts_products' => "carts_products#create"
-  get 'carts_products/:id' => "carts_products#show", as: "carts_product"
-  delete 'carts_products/:id' => "carts_products#destroy"
   post "products/add_to_cart/:id", to: "products#add_to_cart", as: "add_to_cart"
+  post "products/add_from_session_to_db", to: "products#add_from_session_to_db", as: "add_from_session_to_db"
   delete "products/remove_from_cart/:id", to: "products#remove_from_cart", as: "remove_from_cart"
   resources :categories
   resources :products
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
+  get 'cart', to: 'carts#show', as: :cart
+  post 'cart/:id', to: 'carts#create', as: :carts
+  get 'order', to: 'orders#show', as: :order
+  post 'order/:id', to: 'orders#create', as: :orders
+  delete 'cart/:id', to:'carts#destroy', as: :cart_product
   resources :orders
-  devise_for :users
   root "home#index"
 end

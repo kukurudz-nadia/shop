@@ -1,28 +1,16 @@
-<figure class="relative transition-all ">
-  <img class="rounded-lg" src="<%= image_path('breathtaking-online-shopping-statistics-you-never-knew.png') %>" width="1600" height="500"/>
-  </a>
-  <figcaption class="absolute pl-10  top-5 text-lg text-gray-800 drop-shadow-lg bottom-6">
- <br>
+<%= image_tag("home.png", class: "rounded-lg", width: "100%")%>
 <h1 class="font-semibold text-4xl ">We sell all from your dreams!</h1>
- <br>
-   <%- if user_signed_in? %>
-     <%= link_to t('nav.logout'), destroy_user_session_path, class: "nav-link", data: { turbo_method: :delete }, class:"relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800 relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0" %>       
-   <% else%>
-     <%= link_to new_user_registration_path do %>
-     <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
-     <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+<% if user_signed_in? %>
+  <%= button_to "Log out", destroy_user_session_path, method: :delete, class:"btn-gradient"%>
+<% else%>
+  <%= link_to new_user_registration_path do %>
+    <button type="button" class="btn-gradient">
         Sign up
-     </span>
-     </button>
-     <% end %>
-   <%= link_to new_user_session_path do %>
-    <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
-    <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-      Sign in
-    </span>
-    </button>
-    <% end %>
+   </button>
   <% end %>
-  </figcaption>
-</figure>
-
+  <%= link_to new_user_session_path do %>
+    <button type="button" class="btn-gradient">
+     Sign in
+    </button>
+  <% end %>
+<% end %>
