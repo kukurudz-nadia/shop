@@ -17,6 +17,7 @@ gem 'simplecov', '~> 0.22.0'
 gem 'faker', '~> 3.1'
 gem "devise"
 gem 'turbolinks'
+gem 'simple_form'
 
 group :development, :test do
   gem 'rspec-rails', '~> 6.0', '>= 6.0.1'

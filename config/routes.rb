@@ -4,13 +4,15 @@ Rails.application.routes.draw do
   delete "products/remove_from_cart/:id", to: "products#remove_from_cart", as: "remove_from_cart"
   resources :categories
   resources :products
-  resources :orders
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
   get 'cart', to: 'carts#show', as: :cart
   post 'cart/:id', to: 'carts#create', as: :carts
+  get 'order', to: 'orders#show', as: :order
+  post 'order/:id', to: 'orders#create', as: :orders
   delete 'cart/:id', to:'carts#destroy', as: :cart_product
+  resources :orders
   root "home#index"
 end
