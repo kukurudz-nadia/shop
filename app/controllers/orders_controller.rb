@@ -4,16 +4,22 @@ class OrdersController < ApplicationController
   end
 
   def new
+    # address = Address.new(address_params)
+    # puts ("address params: " + address_params)
+    # address.save
+
+    #order
     @order = Order.create(user_id: current_user.id, status: "created", ordered_at: DateTime.current)
     current_user.cart.products.each do |item|
       @order.products << item
       current_user.cart[:id] = nil
     end
-    # address = Address.new(address_params)
-    # address.save
+    
+    # #order details
     # @order_detail = OrderDetail.new(order_detail_params)
     # @order_detail.save
-    @order.save
+    # @order.save
+
   end
 
   def create
@@ -47,10 +53,10 @@ class OrdersController < ApplicationController
     end
 
     # def order_detail_params
-    #   params.require(:order_detail).permit(:first_name, :last_name, :email, address_id: address.id, order_id: @order.id)
+    #   params[:order].require(:order_detail).permit(:first_name, :last_name, :email, address_id: address.id, order_id: @order.id)
     # end
 
     # def address_params
-    #   params.require(:address).permit(:street, :city, :coutry, :comment, user_id: current_user.id)
+    #   params.dig(:order, :order_detail).require(:address).permit(:street, :city, :country, :comment, user_id: current_user.id)
     # end
 end

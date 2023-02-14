@@ -7,6 +7,7 @@ class CartsController < ApplicationController
   end
 
   def destroy
+    current_user.cart.products.destroy(params[:id])
   end
 
 

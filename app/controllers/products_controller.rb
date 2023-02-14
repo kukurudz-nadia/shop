@@ -21,7 +21,8 @@ class ProductsController < ApplicationController
   end
 
   def remove_from_cart
-    session[:cart].delete(id)
+    session[:product_ids].delete(params[:id])
+    #     current_user.cart.cart_products[:product_ids].delete(params[:id].to_i)
     redirect_to products_path
   end
 

@@ -4,18 +4,6 @@
       <p class="py-2.5 text-2xl font-bold w-4/5 mx-auto">ORDER</p>
         <p class="py-2.5 text-xl font-bold w-4/5 mx-auto">Status: <%= @order.status %></p>
         <p class="py-2.5 font-normal text-xl text-gray-700">Ordered at: <%= @order.ordered_at %></p>
-        <p class="py-2.5 font-normal text-xl text-gray-700">Products: </p>
-        <% @order.products.each do |product|%>
-          <p class="py-2.5 text-normal font-bold w-4/5 mx-auto"><%= product.name %>
-          <%= product.price%>$</p>
-        <%end%>
-        <%= simple_form_for(@order) do |form| %>
-            <%= form.input :status, placeholder: "Your first name" %>
-            
-          <%= form.button :submit, class:"btn-blue" %>
-        <% end %>
-        
-  <%# <%= link_to "", categories_path, class: "text-xl btn-blue"%> 
         </div>
     </div>
 </div>
