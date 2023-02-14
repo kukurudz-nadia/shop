@@ -14,6 +14,18 @@
            </th>
         </tr>
       </thead>
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <tbody>
+            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <%= link_to @order.status, order_path(order) %>
+                </th>
+                <td class="px-6 py-4">
+                    <%= link_to @order.ordered_at, order_path(order) %>
+                </td>
+            </tr>
+        </tbody>
+      </div>
   </table>
 </div>
-<%= render @orders %>
+

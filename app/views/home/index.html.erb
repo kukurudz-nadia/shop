@@ -1,4 +1,4 @@
-<%= image_tag("home.png", class: "rounded-lg")%>
+<%= image_tag("home.png", class: "rounded-lg", width: "100%")%>
 <h1 class="font-semibold text-4xl ">We sell all from your dreams!</h1>
 <% if user_signed_in? %>
   <%= button_to "Log out", destroy_user_session_path, method: :delete, class:"btn-gradient"%>
