@@ -5,5 +5,23 @@
         <p class="py-2.5 text-xl font-bold w-4/5 mx-auto">Status: <%= @order.status %></p>
         <p class="py-2.5 font-normal text-xl text-gray-700">Ordered at: <%= @order.ordered_at %></p>
         </div>
+
+        <%= simple_form_for @order do |form| %>
+          <%= form.simple_fields_for :order_detail do |detail| %>
+            <%= detail.input :first_name %>
+            <%= detail.input :last_name %>
+            <%= detail.input :email %>
+            <%= detail.simple_fields_for :address do |address| %>
+              <%= address.input :country , as: :text %>
+              <%= address.input :city %>
+              <%= address.input :street %>
+              <%= address.input :comment %>
+            <% end%>
+          <% end %>
+            <div>
+              <%= form.submit "Submit",  class: "" %>
+            </div>
+          </div>
+        <% end %>
     </div>
 </div>
