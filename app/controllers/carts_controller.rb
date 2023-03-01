@@ -6,12 +6,12 @@ class CartsController < ApplicationController
   def create
   end
 
-  def destroy
+  def remove_from_cart
+    current_user.cart.products.destroy(params[:id])
+    redirect_to cart_path
   end
 
-
   private
-
   def resource
     if user_signed_in?
       Product.where(id: current_user.cart.cart_products.pluck(:product_id))

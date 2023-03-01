@@ -2,20 +2,22 @@
     <div class="w-full max-w-sm bg-amber-100 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <div class="px-5 pb-5">
       <p class="py-2.5 text-2xl font-bold w-4/5 mx-auto">ORDER</p>
-        <p class="py-2.5 text-xl font-bold w-4/5 mx-auto">Status: <%= @order.status %></p>
-        <p class="py-2.5 font-normal text-xl text-gray-700">Ordered at: <%= @order.ordered_at %></p>
-        <p class="py-2.5 font-normal text-xl text-gray-700">Products: </p>
-        <% @order.products.each do |product|%>
-          <p class="py-2.5 text-normal font-bold w-4/5 mx-auto"><%= product.name %>
-          <%= product.price%>$</p>
-        <%end%>
-        <%= simple_form_for(@order) do |form| %>
-            <%= form.input :status, placeholder: "Your first name" %>
-            
-          <%= form.button :submit, class:"btn-blue" %>
+        <%= simple_form_for @order do |form| %>
+          <%= form.simple_fields_for :order_detail do |detail| %>
+            <%= detail.input :first_name %>
+            <%= detail.input :last_name %>
+            <%= detail.input :email %>
+            <%= detail.simple_fields_for :address do |address| %>
+              <%= address.input :country , as: :text %>
+              <%= address.input :city %>
+              <%= address.input :street %>
+              <%= address.input :comment %>
+            <% end%>
+          <% end %>
+            <div>
+              <%= form.submit "Submit",  class:"btn-green" %>
+            </div>
+          </div>
         <% end %>
-        
-  <%# <%= link_to "", categories_path, class: "text-xl btn-blue"%> 
-        </div>
     </div>
 </div>

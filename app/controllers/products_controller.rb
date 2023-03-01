@@ -16,17 +16,22 @@ class ProductsController < ApplicationController
       session[:product_ids] = [] 
     end
     
-    session[:product_ids] << params[:id]
+    if user_signed_in?
+      session[:product_ids].each do |product_id|
+        current_cart_products = CartProduct.create(cart_id: current_user.cart.id, product_id: product_id)
+      end
+    else
+      session[:product_ids] << params[:id]
+    end
     redirect_to products_path
   end
 
-  def remove_from_cart
-    session[:cart].delete(id)
-    redirect_to products_path
+  def remove_from_session_cart
+    session[:product_ids].delete(params[:id])
+    redirect_to cart_path
   end
 
   private
-
   def collection
     Product.ordered
   end

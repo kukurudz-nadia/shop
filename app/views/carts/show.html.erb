@@ -1,12 +1,27 @@
 <div class="w-full max-w-sm bg-emerald-200 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
   <div class="px-5 pb-5">
     <h1 class="text-3xl font-semibold mt-0 mb-10 text-rose-700">Shopping cart</h1>
-       <% @cart.each do |item| %>
+    <% if user_signed_in?  %>
+      <p class="font-bold text-xl"> Items count: <%= current_user.cart.products.count %></p>
+      <% current_user.cart.products.each do |item| %>
         <p class="font-bold text-xl">Name: <%= item.name %></p>
         <p class="font-bold text-xl"> Price: <%= item.price %></p>
-        <%= button_to "Remove from cart", remove_from_cart_path(item), method: :delete , class:"btn-green"%>
+        <%= button_to "Remove from cart", remove_from_cart_path(id: item.id), method: :delete, class:"btn-green"%>
+      <% end %>
+    <% else %>
+       <% if session[:product_ids].nil? %>
+        <p class="font-bold text-xl"> Your cart is empty: </p>
+       <% else %>
+        <p class="font-bold text-xl"> Items count: <%= session[:product_ids].count %></p>
        <% end %>
-       <%= link_to "Order", new_order_path, class: "text-xl btn-blue"%>
+       <% session[:product_ids].each do |product_id| %>
+          <% p = Product.find(product_id)%>
+          <p class="font-bold text-xl">Name: <%= p.name %></p>
+          <p class="font-bold text-xl"> Price: <%= p.price %></p>
+          <%= button_to "Remove from cart", remove_from_session_cart_path(id: p.id), method: :delete, class:"btn-green"%>
+       <% end %>
+    <% end %>
+    <%= link_to "Order", new_order_path, class: "text-xl btn-blue"%>
   </div>
 </div>
 
